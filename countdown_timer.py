@@ -1,5 +1,6 @@
 import tkinter as tk
-from datetime import datetime, timedelta
+from datetime import datetime
+
 
 class CountdownTimer:
     def __init__(self, master):
@@ -22,10 +23,15 @@ class CountdownTimer:
         hours, remainder = divmod(remaining_time.seconds, 3600)
         minutes, seconds = divmod(remainder, 60)
 
-        time_format = f"{years} Years {days} Days {hours:02}:{minutes:02}:{seconds:02}"
+        time_format = (
+            f"{years} Years "
+            f"{days} Days "
+            f"{hours:02}:{minutes:02}:{seconds:02}"
+        )
         self.label.config(text=time_format)
 
         self.master.after(1000, self.update_timer)
+
 
 if __name__ == "__main__":
     root = tk.Tk()
